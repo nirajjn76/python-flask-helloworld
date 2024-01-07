@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'dev-node'
+        }
 
     stages {
         
@@ -24,6 +26,18 @@ pipeline {
         stage('pull') {
             steps {
                 sh 'docker pull nirajjn76/pythonflaskdemo:latest'
+            }
+        }
+        
+        stage('take down previous version') {
+            steps {
+                sh 'docker rm -f myflaskapp'
+            }
+        }
+        
+        stage('deploy') {
+            steps {
+                sh 'docker run -d -p 5000:5000 --name=myflaskapp nirajjn76/pythonflaskdemo:latest'
             }
         }
     }
