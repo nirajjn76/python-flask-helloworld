@@ -10,7 +10,7 @@ pipeline {
         //         checkout scmGit(branches: [[name: 'main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nirajjn76/python-flask-helloworld.git']])
         //     }
         // }
-        
+    
         stage('build') {
             steps {
                 sh 'docker build -t nirajjn76/pythonflaskdemo:latest .'
