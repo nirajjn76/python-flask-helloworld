@@ -55,6 +55,6 @@ pipeline {
             steps {
                 archiveArtifacts artifacts: '.env', followSymlinks: false
             }
-
+        }
     }
 }
