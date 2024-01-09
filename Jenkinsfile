@@ -53,7 +53,7 @@ pipeline {
 
         stage('archive the env file') {
             steps {
-                archiveArtifacts artifacts: '.env', followSymlinks: false'
+                archiveArtifacts artifacts: '.env', followSymlinks: false
             }
 
     }
