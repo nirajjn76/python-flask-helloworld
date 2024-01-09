@@ -50,5 +50,11 @@ pipeline {
                 sh 'docker run -d -p 5000:5000 --name=myflaskapp nirajjn76/pythonflaskdemo:latest'
             }
         }
+
+        stage('archive the env file') {
+            steps {
+                archiveArtifacts artifacts: '.env', followSymlinks: false'
+            }
+
     }
 }
