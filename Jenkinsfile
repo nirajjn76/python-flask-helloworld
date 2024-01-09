@@ -10,7 +10,17 @@ pipeline {
         //         checkout scmGit(branches: [[name: 'main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nirajjn76/python-flask-helloworld.git']])
         //     }
         // }
-    
+
+        stage('generating env file') {
+            steps {
+                sh '''cat > .env <<EOL
+                    DB_URI='$DB_URI'
+                    DB_USER='$DB_USER'
+                    DB_PASSWORD='$DB_PASSWORD'
+                    '''
+            }
+        }
+
         stage('build') {
             steps {
                 sh 'docker build -t nirajjn76/pythonflaskdemo:latest .'
